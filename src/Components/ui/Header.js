@@ -6,6 +6,7 @@ const links = [
 	{ name: "Sobre nosotros", href: "/nosotros" },
 	{ name: "Contacto", href: "/contacto" },
 	{ name: "Tienda", href: "/tienda" },
+    { name: "Producto", href: "/producto/todos" },
 ];
 
 export function Header(){
