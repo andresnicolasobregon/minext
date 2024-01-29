@@ -1,6 +1,3 @@
-import { Title } from "@/Components/Title";
-import { Counter } from "@/Components/Counter.jsx";
-
 
 
 export const metadata = {
@@ -9,12 +6,11 @@ export const metadata = {
   keywords: ["pagina web", "eventos"]
 }
 
-export default function Home() {
+export default function Nosotros() {
   return (
     <>
     <main className="min-h-screen mt-24 flex flex-col justify-center items-center sm:flex-row sm:gap-x-6 md:mt-6">
-      <Title  text={"Contador de Andrés"}/>
-      <Counter />
+        <p>Bienvenido</p>
     </main>
     </>
     
