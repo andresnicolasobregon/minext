@@ -5,8 +5,8 @@ import Link from "next/link";
 const links = [
 	{ name: "Sobre nosotros", href: "/nosotros" },
 	{ name: "Contacto", href: "/contacto" },
-	{ name: "Tienda", href: "/tienda" },
-    { name: "Producto", href: "/producto/todos" },
+	{ name: "Tienda", href: "/producto/todos" },
+    { name: "Login", href: "/login" },
 ];
 
 export function Header(){

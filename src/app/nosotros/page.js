@@ -1,7 +1,7 @@
 
 
 export const metadata = {
-  title: "Mi página next",
+  title: "Sobre nosotros",
   description: "Página de Andrés Obregón",
   keywords: ["pagina web", "eventos"]
 }
