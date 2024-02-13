@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { collection, getDocs, query, where} from "firebase/firestore";
-import {db} from "@/app/api/firebase/config"
+import {db} from "@/app/firebase/config"
 
 export async function GET(request, {params}) {
     const {categoria} = params
@@ -9,7 +9,7 @@ export async function GET(request, {params}) {
     
     const q = categoria === 'todos'
     ? productoRef
-    : query(productoRef, where('type', '==', categoria))
+    : query(productoRef,where('type', '==', categoria))
 
     const querySnapshot = await getDocs(q)
     const docs = querySnapshot.docs.map(doc=>doc.data())

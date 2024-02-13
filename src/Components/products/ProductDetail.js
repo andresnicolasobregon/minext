@@ -1,8 +1,21 @@
-import { listaproductos } from "@/data/Products";
+
 import Qtyselector from "./Qtyselector";
 
-const ProducDetail = ({slug})=>{
-    const item =listaproductos.find(p=>p.slug === slug)
+const ProducDetail = async ({ slug }) => {
+    console.log(slug)
+
+    const item = await fetch(`http://localhost:3000/api/product/${slug}`, {
+        cache: "no-store",
+        next: { revalidate: 0 }
+    })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .catch(error => console.error('Fetch error:', error));
+
     return(
         <>
         <main className="min-h-screen flex flex-col justify-center items-center mt-24">
