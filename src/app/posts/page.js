@@ -1,10 +1,23 @@
 import React from 'react'
+import Link from 'next/link'
 
+const getPosts = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts" ,{
+        cache: "force-cache", 
+        next: { revalidate: 3600 }  
+    }) 
+
+    if (!response.ok) {
+        throw new Error("Fallo la obtencion de datos")
+    }
+
+    return response.json()
+}
 
 
 const Posts = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
-    const posts = await response.json()
+    
+    const posts = await getPosts()
     return (
         <div className='container m-auto mt-6'>
             <h1 className='text-2xl'>Posts</h1>
@@ -12,10 +25,12 @@ const Posts = async () => {
             <ul>
                 {posts.map((post) => (
                     
-                    <li  key={post.id}
-                        className='my-4 ml-6 list-disc'
-                    > {post.title}
+                    <Link href={`/posts/${post.id}`} key={post.id}>
+                    <li  
+                        className='my-4 ml-6'
+                    > {post.id}. <b>{post.title}</b>
                     </li>
+                    </Link>
                 ))}
             </ul>
         </div>

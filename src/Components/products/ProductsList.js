@@ -1,14 +1,24 @@
 import { listaproductos } from "@/data/Products";
 import ProductCard from "./ProductCard";
 
-export default function ProductsList({categoria}) {
-    const items = categoria === "todos" ? listaproductos : listaproductos.filter(item =>item.type === categoria)
-    return (
-      <section className="container m-auto flex justify-center gap-12 flex-wrap">
-        {
-            items.map(item => <ProductCard key={item.slug} item={item}/>)
+const ProductsList = async ({categoria}) => {
+    const items = await fetch(`http://localhost:3000/api/productos/${categoria}`, {
+        cache: "no-store",
+        next: {
+            tags: ["productos"]
         }
-      </section>
-      
-    );
-  }
+    })
+    .then(r => r.json())
+
+    return (
+      <main className="min-h-screen mt-24 flex flex-col justify-center items-center">
+        <section className="container m-auto flex justify-center items-center gap-12 flex-wrap">
+            {
+                items.map(item => <ProductCard key={item.slug} item={item} />)
+            }
+        </section>
+      </main>
+    )
+}
+
+export default ProductsList
