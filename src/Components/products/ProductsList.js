@@ -1,4 +1,3 @@
-import { listaproductos } from "@/data/Products";
 import ProductCard from "./ProductCard";
 
 const ProductsList = async ({categoria}) => {
