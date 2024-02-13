@@ -1,17 +1,10 @@
 import { NextResponse } from "next/server";
-import { listaproductos } from "@/data/Products";
-import { revalidateTag } from "next/cache";
-
-const sleep = (timer) => {
-    return new Promise((resolve) => setTimeout(resolve, timer))
-}
-
+import { collection, getDocs, Query } from "firebase/firestore";
+import {db} from "@/firebase/config"
 
 export async function GET(request, {params}) {
     const {categoria} = params
-    const data = categoria === "todos" ? listaproductos: listaproductos.filter(item => item.type === categoria)
     
-    await sleep(1000)
-    revalidateTag("productos") 
-    return NextResponse.json(data)
+    
+    
 }
