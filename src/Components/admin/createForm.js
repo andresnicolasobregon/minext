@@ -3,6 +3,30 @@
 import { useState } from "react"
 import { Boton } from "@/Components/ui/Boton";
 
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
+import { doc, setDoc } from "firebase/firestore"
+import { db, storage } from "@/app/firebase/config"
+
+const createProduct = async (values, archivo) => {
+    //  para guardar imagenes
+    try {
+        const storageRef = ref(storage, values.slug)
+        const fileSnapshot = await uploadBytes(storageRef, archivo)
+        const fileURL = await getDownloadURL(fileSnapshot.ref)
+    
+    const docRef = doc(db, "productos", values.slug)
+    return setDoc(docRef, {
+        ...values,
+        image: fileURL
+    })
+        .then(() => console.log("Producto agregado exitosamente"))
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 const CreateForm = () => {
     const [values, setValues] = useState({
         title: "",
@@ -13,6 +37,7 @@ const CreateForm = () => {
         slug: "",
     })
 
+    const [file, setFile] = useState(null)
 
 
     const handleChange = (e) => {
@@ -25,7 +50,7 @@ const CreateForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(values)
-        
+        await createProduct(values, file)
     }
 
     return (

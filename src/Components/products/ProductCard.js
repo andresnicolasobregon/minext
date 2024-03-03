@@ -8,7 +8,7 @@ export default function ProductCard ({item}) {
             <div className="px-4 border-t border-gray-200 p-3 rounded">
                     <Image
                         alt={item.title}
-                        src={`/img/${item.image}`}
+                        src={item.image}
                         width={288}
                         height={288}
                     />

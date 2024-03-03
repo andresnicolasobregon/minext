@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 const link = [
     {label: "Todos", href:"/producto/todos"},
     {label: "TVs", href:"/producto/tvs"},
-    {label: "Aires", href:"/producto/aires"}
+    {label: "Netbooks", href:"/producto/netbook"}
 ]
 
 export default function CategoriesMenu() {
