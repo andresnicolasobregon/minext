@@ -11,14 +11,14 @@ const links = [
 
 export function Header(){
     return (
-        <header className="py-2 px-8 w-full fixed top-0 z-50 bg-white/75 backdrop-blur-sm">
+        <header className="py-2 px-8 w-full fixed top-0 z-50 bg-gray-100 backdrop-blur-sm">
             <nav className="flex justify-between items-center">
                 <Link href={"/"}>
                     <Image
-                        src={"/logocresi.ico"}
-                        alt="Logotipo de CrESI"
-                        width={64}
-                        height={64}
+                        src={"/logo.png"}
+                        alt="Logotipo de ElectroWEb"
+                        width={100}
+                        height={100}
                     />
                 </Link>
                 <ul className="hidden md:flex gap-4">
