@@ -4,7 +4,7 @@ import Qtyselector from "./Qtyselector";
 const ProducDetail = async ({ slug }) => {
     console.log(slug)
 
-    const item = await fetch(`http://${process.env.API_URL}product/${slug}`, {
+    const item = await fetch(`${process.env.API_URL}product/${slug}`, {
         cache: "no-store",
         next: { revalidate: 0 }
     })
