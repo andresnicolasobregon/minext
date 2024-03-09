@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { Boton } from "../ui/Boton"
+import { Boton } from "@/Components/ui/Boton";
 import { useRouter } from "next/navigation";
 
 // Firebase
